@@ -29,8 +29,11 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world JAYASHAN JMETER!
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # Step 2: Install JMeter
+      - name: Install JMeter
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          sudo apt-get update
+          sudo apt-get install -y default-jdk wget
+          wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.6.3.tgz
+          tar -xvzf apache-jmeter-5.6.3.tgz
+          mv apache-jmeter-5.6.3 ~/jmeter
