@@ -37,3 +37,17 @@ jobs:
           wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.6.3.tgz
           tar -xvzf apache-jmeter-5.6.3.tgz
           mv apache-jmeter-5.6.3 ~/jmeter
+
+       # Step 3: Run JMeter test plan
+      - name: Run JMeter test plan
+        run: |
+          mkdir -p results
+           ~/jmeter/bin/jmeter -n -t test-plans/test-plan-example-API.jmx -l results/results.jtl -j results/jmeter.log
+
+        # Step 4: Save results as artifacts
+      - name: Upload results folder as artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-results-and-test-results
+          path: |
+            results/
