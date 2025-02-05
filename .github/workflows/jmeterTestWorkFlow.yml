@@ -11,9 +11,24 @@ on:
   # schedule:
   #    # Runs at 11:00 AM UTC daily
   #    - cron: "42 10 * * *"
- 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      threads:
+        description: "Number of Threads (users)"
+        required: true
+        default: "1"
+      rampup:
+        description: "Ramp-up Period (seconds)"
+        required: true
+        default: "1"
+      loopcount:
+        description: "Loop Count"
+        required: true
+        default: "2"
+      duration:
+        description: "Test Duration (seconds)"
+        required: true
+        default: "3600"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
